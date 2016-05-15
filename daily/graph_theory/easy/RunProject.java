@@ -4,23 +4,38 @@
  */
 
 public class RunProject {
-
     public static void main(String[] args) {
+        
+        String fileName;
+        NodeDegrees answer;
+        
+        try {
+            // Set text file for argument given
+            fileName = args[0];
+            
+        } catch(Exception e) {
+            // If no filename given, will continue as normal
+            fileName = "NULL";
+        }
+        
         // Counting time it takes to execute
         // this is beginning time
-        long time = System.nanoTime();
-        
+        //long time = System.nanoTime();
         
         // Replace these two lines to swap problem being solved
-        NodeDegrees answer = new NodeDegrees();
-        answer.printAnswer();
+        
+        answer = new NodeDegrees(fileName);
+        answer.printAnswer();  
+        
         
         
         // Countng time it takes to execute
         // Print time elapsed
+        /*
 		time = System.nanoTime() - time;		 
         System.out.println("Time: " + time);
         System.out.println("In Scientific Notation: " + (time/1.0e9));
+        */
     }
 }
 

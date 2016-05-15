@@ -17,15 +17,34 @@ public class NodeDegrees {
     static int nodeCount = 0;
     static int selectedNode = 0;
     static int selectedConnect = 0;
+    static String fileName;
     static Scanner scan = new Scanner(System.in);
     static int[] arrOfConnects;
     
     static NodeConnections nCons;
     
+    public NodeDegrees(String file) {
+        fileName = file;
+    }
+    
     private static void solve() {
+        // No file provided, CLI interaction
+        if (fileName == "NULL") {
+            cliInput();
+        } else {
+            System.out.println("Reading from file: " + fileName);
+        }
+    }
+    
+    private static void fileInput() {
+        
+    }
+    
+    private static void cliInput() {
         setNodeCount();
         nCons = new NodeConnections(nodeCount);
-        
+    
+    
         while (getNodePairs() > 0) {
             if (selectedNode <= nodeCount && selectedConnect <= nodeCount) {
                 nCons.add(selectedNode, selectedConnect);
@@ -35,7 +54,6 @@ public class NodeDegrees {
                 System.out.println("Nodes must be within the set amount.");
             }
         }
-        
     }
     
     private static void setNodeCount() {
