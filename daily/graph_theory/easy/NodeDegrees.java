@@ -34,7 +34,6 @@ public class NodeDegrees {
                 selectedConnect = 0;
                 System.out.println("Nodes must be within the set amount.");
             }
-            
         }
         
     }
@@ -42,7 +41,13 @@ public class NodeDegrees {
     private static void setNodeCount() {
         System.out.print("How many nodes are there?  ");
         nodeCount = scan.nextInt();
-        arrOfConnects = new int[nodeCount];
+        
+        if (nodeCount > 0) {
+            arrOfConnects = new int[nodeCount];
+        } else {
+            System.out.println("There must be more than zero nodes.");
+            setNodeCount();
+        }
     }
     
     private static int getNodePairs() {
@@ -55,11 +60,18 @@ public class NodeDegrees {
             // setting to defaults before exiting
             selectedNode = 0;
             selectedConnect = 0;
-            
             return -1;
+            
         } else {
             System.out.print("Connects to: ");
             selectedConnect = scan.nextInt();
+            
+            if (selectedConnect < 0) {
+                System.out.println("Exiting node pair entry.");
+                selectedNode = 0;
+                selectedConnect = 0;
+                return -1;
+            }
         }
         
         return selectedNode;

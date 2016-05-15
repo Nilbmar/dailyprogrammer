@@ -3,8 +3,6 @@
  *  Class to run all projects with same compile/run command
  */
 
-
-
 public class RunProject {
 
     public static void main(String[] args) {
