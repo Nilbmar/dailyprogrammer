@@ -32,12 +32,17 @@ public class NodeDegrees {
     private static void solve() {
         // No file provided, CLI interaction
         if (fileName == "NULL") {
+            // No file provided, interactive terminal
             cliInput();
         } else {
+            // File Input
             System.out.println("Reading from file:");
             rFile = new ReadFile(fileName);
+            
+            // Grabs an int[], index 0 is number of nodes
             arrFromList = rFile.get();
             
+            // Prints out array contents for testing
             int arrLen = arrFromList.length;
             for (int x = 0; x < arrLen; x++) {
                 System.out.println("From arrFromList " + arrFromList[x]);
