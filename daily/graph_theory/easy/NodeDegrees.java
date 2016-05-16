@@ -20,8 +20,10 @@ public class NodeDegrees {
     static String fileName;
     static Scanner scan = new Scanner(System.in);
     static int[] arrOfConnects;
+    static int[] arrFromList;
     
     static NodeConnections nCons;
+    static ReadFile rFile;
     
     public NodeDegrees(String file) {
         fileName = file;
@@ -32,7 +34,14 @@ public class NodeDegrees {
         if (fileName == "NULL") {
             cliInput();
         } else {
-            System.out.println("Reading from file: " + fileName);
+            System.out.println("Reading from file:");
+            rFile = new ReadFile(fileName);
+            arrFromList = rFile.get();
+            
+            int arrLen = arrFromList.length;
+            for (int x = 0; x < arrLen; x++) {
+                System.out.println("From arrFromList " + arrFromList[x]);
+            }
         }
     }
     
