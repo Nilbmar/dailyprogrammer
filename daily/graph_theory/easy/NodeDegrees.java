@@ -14,22 +14,22 @@ import java.util.Scanner;
 
 public class NodeDegrees {
     
-    static int nodeCount = 0;
-    static int selectedNode = 0;
-    static int selectedConnect = 0;
-    static String fileName;
-    static Scanner scan = new Scanner(System.in);
-    static int[] arrOfConnects;
-    static int[] arrFromList;
+    int nodeCount = 0;
+    int selectedNode = 0;
+    int selectedConnect = 0;
+    String fileName;
+    Scanner scan = new Scanner(System.in);
+    int[] arrOfConnects;
+    int[] arrFromList;
     
-    static NodeConnections nCons;
-    static ReadFile rFile;
+    NodeConnections nCons;
+    ReadFile rFile;
     
     public NodeDegrees(String file) {
         fileName = file;
     }
     
-    private static void solve() {
+    private void solve() {
         // No file provided, CLI interaction
         if (fileName == "NULL") {
             // No file provided, interactive terminal
@@ -50,11 +50,11 @@ public class NodeDegrees {
         }
     }
     
-    private static void fileInput() {
+    private void fileInput() {
         
     }
     
-    private static void cliInput() {
+    private void cliInput() {
         setNodeCount();
         nCons = new NodeConnections(nodeCount);
     
@@ -70,7 +70,7 @@ public class NodeDegrees {
         }
     }
     
-    private static void setNodeCount() {
+    private void setNodeCount() {
         System.out.print("How many nodes are there?  ");
         nodeCount = scan.nextInt();
         
@@ -82,7 +82,7 @@ public class NodeDegrees {
         }
     }
     
-    private static int getNodePairs() {
+    private int getNodePairs() {
         System.out.print("\nFirst node (-1 to cancel): ");
         selectedNode = scan.nextInt();
         
@@ -109,7 +109,7 @@ public class NodeDegrees {
         return selectedNode;
     }
     
-        public static void printAnswer() {
+        public void printAnswer() {
         
         solve();
         System.out.print("\n------****------\n");
