@@ -9,7 +9,7 @@ public class ReadFile {
  
     char type;
     String file;
-    List<Object> arrOfNodes = new ArrayList<Object>();
+    List<Object> listOfNodes = new ArrayList<Object>();
     File input = null;
     Scanner scan = null;
     
@@ -21,9 +21,13 @@ public class ReadFile {
     // Used in read(), makes sure theres something to add()
     private Boolean hasNext() {
         boolean t = false;
+        
+        // Checking for int
         if (type == 'i') {
             t = scan.hasNextInt();
-        } else if (type == 's') {
+        } 
+        // Checking for string
+        else if (type == 's') {
             t = scan.hasNextLine();
         }
         
@@ -32,13 +36,14 @@ public class ReadFile {
     
     // Used in read(), adds content from file
     private void add() {
-        // returning an int[]
+        
+        // Adding an int to list
         if (type == 'i') {
-            arrOfNodes.add(scan.nextInt());
+            listOfNodes.add(scan.nextInt());
         } 
-        // returning a String[]
+        // Adding a string to list
         else if (type == 's') {
-            arrOfNodes.add(scan.nextLine());
+            listOfNodes.add(scan.nextLine());
         }
     }
     
@@ -47,6 +52,7 @@ public class ReadFile {
     // Adds content to list to be converted to array
     private void read() {
         try {
+            // Set up and check for file existence
             input = new File(file);
             if (input.exists()) {
                 scan = new Scanner(input);
@@ -64,30 +70,32 @@ public class ReadFile {
     }
     
     public int[] getInt() {
-        type = 'i';
         System.out.println("Reading file: " + file);
+        
+        type = 'i';
         read();
         
         // Convert List<Object> to int[]
-        int arrSize = arrOfNodes.size();
+        int arrSize = listOfNodes.size();
         int[] array = new int[arrSize];
         for (int x = 0; x < array.length; x++) {
-            array[x] = Integer.parseInt(arrOfNodes.get(x).toString());
+            array[x] = Integer.parseInt(listOfNodes.get(x).toString());
         }
         
         return array;
     }
     
     public String[] getString() {
-        type = 's';
         System.out.println("Reading file: " + file);
+        
+        type = 's';
         read();
         
         // Convert List<Object> to String[]
-        int arrSize = arrOfNodes.size();
+        int arrSize = listOfNodes.size();
         String[] array = new String[arrSize];
         for (int x = 0; x < array.length; x++) {
-            array[x] = arrOfNodes.get(x).toString();
+            array[x] = listOfNodes.get(x).toString();
         }
         
         return array;

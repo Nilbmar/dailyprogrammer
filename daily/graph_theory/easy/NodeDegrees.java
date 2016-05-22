@@ -42,6 +42,7 @@ public class NodeDegrees {
             
             // Grabs an int[], index 0 is number of nodes
             arrFromList = rFile.getInt();
+            //arrFromList = rFile.getString();
             
             // Prints out array contents for testing
             int arrLen = arrFromList.length;
