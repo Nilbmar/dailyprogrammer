@@ -37,22 +37,38 @@ public class NodeDegrees {
             cliInput();
         } else {
             // File Input
-            System.out.println("Reading from file:");
-            rFile = new ReadFile(fileName);
+            fileInput();
             
-            // Grabs an int[], index 0 is number of nodes
-            arrFromList = rFile.getInt();
-            //arrFromList = rFile.getString();
-            
-            // Prints out array contents for testing
-            int arrLen = arrFromList.length;
-            for (int x = 0; x < arrLen; x++) {
-                System.out.println("From arrFromList " + arrFromList[x]);
-            }
         }
     }
     
     private void fileInput() {
+        rFile = new ReadFile(fileName);
+            
+        // Grabs an int[]
+        arrFromList = rFile.getInt();
+        //arrFromList = rFile.getString();
+        
+        // index 0 is the node count
+        setNodeCount(arrFromList[0]);
+        
+        nCons = new NodeConnections(nodeCount);
+        
+        int listSize = arrFromList.length;
+        // Start at 1 to skip 0 index used for nodeCount
+        // Skip every other int because its the second in a pair
+        for (int x = 1; x < listSize; x = x + 2) {
+            selectedNode = arrFromList[x];
+            selectedConnect = arrFromList[x + 1];
+            
+            if (selectedNode <= nodeCount && selectedConnect <= nodeCount) {
+                nCons.add(selectedNode, selectedConnect);
+            } else {
+                System.out.println("Nodes must be within the set amount. Check input file.");
+            }
+            
+        }
+        
         
     }
     
@@ -81,6 +97,16 @@ public class NodeDegrees {
         } else {
             System.out.println("There must be more than zero nodes.");
             setNodeCount();
+        }
+    }
+    
+    private void setNodeCount(int i) {
+        nodeCount = i;
+        
+        if (nodeCount > 0) {
+            arrOfConnects = new int[nodeCount];
+        } else {
+            System.out.println("There must be more than zero nodes. Check first line of input file.");
         }
     }
     
