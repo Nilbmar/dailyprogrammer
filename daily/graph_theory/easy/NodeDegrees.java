@@ -21,6 +21,7 @@ public class NodeDegrees {
     Scanner scan = new Scanner(System.in);
     int[] arrOfConnects;
     int[] arrFromList;
+    //String[] arrFromList;
     
     NodeConnections nCons;
     ReadFile rFile;
@@ -40,7 +41,7 @@ public class NodeDegrees {
             rFile = new ReadFile(fileName);
             
             // Grabs an int[], index 0 is number of nodes
-            arrFromList = rFile.get();
+            arrFromList = rFile.getInt();
             
             // Prints out array contents for testing
             int arrLen = arrFromList.length;
