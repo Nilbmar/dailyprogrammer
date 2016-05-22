@@ -35,7 +35,7 @@ public class ReadFile {
     }
     
     // Used in read(), adds content from file
-    private void add() {
+    private void addNext() {
         
         // Adding an int to list
         if (type == 'i') {
@@ -59,7 +59,7 @@ public class ReadFile {
                
                // Uses helper functions above for Factory Method
                 while(hasNext()) {
-                    add();
+                    addNext();
                 }   
             }
         } catch(Exception e) {
