@@ -14,6 +14,7 @@ import java.util.Scanner;
 
 public class NodeDegrees {
     
+    boolean cont = true;
     int nodeCount = 0;
     int selectedNode = 0;
     int selectedConnect = 0;
@@ -30,7 +31,7 @@ public class NodeDegrees {
         fileName = file;
     }
     
-    private void solve() {
+    private Boolean solve() {
         // No file provided, CLI interaction
         if (fileName == "NULL") {
             // No file provided, interactive terminal
@@ -38,8 +39,9 @@ public class NodeDegrees {
         } else {
             // File Input
             fileInput();
-            
         }
+        
+        return cont;
     }
     
     private void fileInput() {
@@ -65,6 +67,8 @@ public class NodeDegrees {
                 nCons.add(selectedNode, selectedConnect);
             } else {
                 System.out.println("Nodes must be within the set amount. Check input file.");
+                x = listSize;
+                cont = false;
             }
             
         }
@@ -140,12 +144,17 @@ public class NodeDegrees {
         public void printAnswer() {
         
         solve();
-        System.out.print("\n------****------\n");
-        System.out.println("Node count: " + nodeCount);
         
-        for (int x = 0, label = 0; x < nodeCount; x++) {
-            label = x + 1;
-            System.out.println("Node " + label + " has a degree of " + nCons.count(x, nodeCount));
+        if (cont == true) {
+            System.out.print("\n------****------\n");
+            System.out.println("Node count: " + nodeCount);
+            
+            for (int x = 0, label = 0; x < nodeCount; x++) {
+                label = x + 1;
+                System.out.println("Node " + label + " has a degree of " + nCons.count(x, nodeCount));
+            }
+        } else {
+            System.out.print("\n------ An Error Has Occurred ------\n");
         }
     }
 }
